@@ -9,8 +9,18 @@ import java.util.List;
 
 public class UsuarioRepositorioImpl implements Repositorio<Usuario> {
 
+    private Connection conn;
+
     private Connection getConnection() throws SQLException {
         return ConexionBaseDatos.getConnection();
+    }
+
+    public UsuarioRepositorioImpl() {
+    }
+
+    @Override
+    public void setConn(Connection conn) {
+        this.conn = conn;
     }
 
     @Override
