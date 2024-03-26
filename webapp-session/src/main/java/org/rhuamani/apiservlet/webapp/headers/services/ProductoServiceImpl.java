@@ -15,12 +15,9 @@ public class ProductoServiceImpl implements ProductoService{
     }
 
     @Override
-    public Optional<Producto> buscarProducto(String nombre) {
-        return listar().stream().filter(p -> {
-            if (nombre == null || nombre.isBlank()) {
-                return false;
-            }
-            return p.getNombre().contains(nombre);
-        }).findFirst();
+    public Optional<Producto> porId(Long id) {
+        return listar().stream().filter(p -> p.getId().equals(id)).findAny();
     }
+
+
 }

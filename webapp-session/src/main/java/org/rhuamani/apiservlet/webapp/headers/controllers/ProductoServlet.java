@@ -44,6 +44,7 @@ public class ProductoServlet extends HttpServlet {
             out.println("<th>tipo</th>");
             if(usernameOptional.isPresent()) {
                 out.println("<th>precio</th>");
+                out.println("<th>agregar</th>");
             }
             out.println("</tr>");
             productos.forEach(p -> {
@@ -53,10 +54,15 @@ public class ProductoServlet extends HttpServlet {
                 out.println("<td>" + p.getTipo() + "</td>");
                 if(usernameOptional.isPresent()) {
                     out.println("<td>" + p.getPrecio() + "</td>");
+                    out.println("<td><a href=\""
+                            + req.getContextPath()
+                            + "/agregar-carro?id=" + p.getId()
+                            + "\">agregar al carro</a></td>");
                 }
                 out.println("</tr>");
             });
             out.println("</table>");
+            out.println("<p><a href=\"" + req.getContextPath() + "/index.html\">volver</a></p>");
             out.println("    </body>");
             out.println("</html>");
         }
