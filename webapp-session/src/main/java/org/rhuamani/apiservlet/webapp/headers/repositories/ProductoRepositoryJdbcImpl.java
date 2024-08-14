@@ -45,6 +45,11 @@ public class ProductoRepositoryJdbcImpl implements Repository<Producto> {
     }
 
     @Override
+    public List<Producto> porNombre(String nombre) throws SQLException {
+        return List.of();
+    }
+
+    @Override
     public void guardar(Producto producto) throws SQLException {
 
     }
