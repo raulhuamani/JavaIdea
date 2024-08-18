@@ -61,12 +61,32 @@ public class CursoRepositorioImpl implements Repository<Curso> {
 
     @Override
     public void guardar(Curso curso) throws SQLException {
+        String sql;
+        if (curso.getId() != null && curso.getId() > 0) {
+            sql = "update cursos set nombre=?, descripcion=?, instructor=?, duracion=? where id=?";
+        } else {
+            sql = "insert into cursos (nombre, descripcion, instructor, duracion) values (?,?,?,?)";
+        }
+        try ( PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, curso.getNombre());
+            stmt.setString(2, curso.getDescripcion());
+            stmt.setString(3, curso.getInstructor());
+            stmt.setDouble(4, curso.getDuracion());
 
+            if (curso.getId() != null && curso.getId() > 0) {
+                stmt.setLong(5, curso.getId());
+            }
+            stmt.executeUpdate();
+        }
     }
 
     @Override
     public void eliminar(Long id) throws SQLException {
-
+        String sql = "delete from cursos where id=?";
+        try ( PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        }
     }
 
     private Curso getCurso(ResultSet rs) throws SQLException {
