@@ -14,7 +14,7 @@ import java.sql.Connection;
 import java.util.List;
 
 @WebServlet("/cursos/buscar")
-public class BuscarCursoServlet extends HttpServlet {
+public class CursoBuscarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

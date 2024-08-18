@@ -18,7 +18,7 @@ public class CursoRepositorioImpl implements Repository<Curso> {
     public List<Curso> listar() throws SQLException {
         List<Curso> cursos = new ArrayList<>();
 
-        try ( Statement stmt = conn.createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM cursos as c")) {
+        try ( Statement stmt = conn.createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM cursos")) {
             while (rs.next()) {
                 Curso p = getCurso(rs);
                 cursos.add(p);
@@ -29,14 +29,24 @@ public class CursoRepositorioImpl implements Repository<Curso> {
 
     @Override
     public Curso porId(Long id) throws SQLException {
-        return null;
+        Curso curso = null;
+        try(PreparedStatement stmt = conn.prepareStatement("SELECT * FROM cursos c WHERE c.id = ?")) {
+            stmt.setLong(1, id);
+
+            try(ResultSet rs = stmt.executeQuery()) {
+                if(rs.next()) {
+                    curso = getCurso(rs);
+                }
+            }
+        }
+        return curso;
     }
 
     @Override
     public List<Curso> porNombre(String nombre) throws SQLException {
         List<Curso> cursos = new ArrayList<>();
 
-        try ( PreparedStatement stmt = conn.prepareStatement("SELECT * FROM cursos as c WHERE c.nombre like ?")) {
+        try ( PreparedStatement stmt = conn.prepareStatement("SELECT * FROM cursos c WHERE c.nombre like ?")) {
             stmt.setString(1, "%" + nombre + "%");
 
             try ( ResultSet rs = stmt.executeQuery()) {
