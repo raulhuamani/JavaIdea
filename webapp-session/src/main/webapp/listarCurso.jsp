@@ -1,4 +1,4 @@
-<%@page contentType="UTF-8" import="java.util.*, org.rhuamani.apiservlet.webapp.headers.models.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*, org.rhuamani.apiservlet.webapp.headers.models.*"%>
 <%
 List<Curso> cursos = (List<Curso>) request.getAttribute("cursos");
 String titulo = (String) request.getAttribute("titulo");
