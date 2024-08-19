@@ -1,23 +1,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<jsp:include page="layout/header.jsp" />
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de productos</title>
-</head>
-<body>
-<h1>Listado de productos</h1>
+<h3>${title}</h3>
 <c:if test="${username.isPresent()}">
-    <div>Hola ${username.get()}, Bienvenido!</div>
-    <p><a href="${pageContext.request.contextPath}/productos/form">crear [+]</a></p>
+    <div class="alert alert-info" >Hola ${username.get()}, Bienvenido!</div>
+    <a class="btn btn-primary my-2" href="${pageContext.request.contextPath}/productos/form">crear [+]</a>
 </c:if>
 <form action="${pageContext.request.contextPath}/productos/buscar" method="post">
-    <input type="text" name="nombre">
-    <input type="submit" value="Buscar">
+    <div class="row mb-4">
+        <div class="col-sm-4">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name="nombre">
+        </div>
+        <div class="col-sm-2">
+            <input class="btn btn-outline-success" type="submit" value="Buscar">
+        </div>
+    </div>
 </form>
-<table>
+<table class="table table-hover table-striped" >
     <tr>
         <th>Id</th>
         <th>Nombre</th>
@@ -36,9 +36,9 @@
             <td>${p.categoria.nombre}</td>
             <c:if test="${username.present}">
             <td>${p.precio}</td>
-            <td><a href="${pageContext.request.contextPath}/carro/agregar?id=${p.id}">Agregar</a></td>
-            <td><a href="${pageContext.request.contextPath}/productos/form?id=${p.id}">Editar</a></td>
-            <td><a onclick="return confirm('Estas seguro de eliminar?')"
+            <td><a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/carro/agregar?id=${p.id}">Agregar</a></td>
+            <td><a class="btn btn-sm btn-success" href="${pageContext.request.contextPath}/productos/form?id=${p.id}">Editar</a></td>
+            <td><a class="btn btn-sm btn-danger" onclick="return confirm('Estas seguro de eliminar?')"
             href="${pageContext.request.contextPath}/productos/eliminar?id=${p.id}">Eliminar</a></td>
             </c:if>
         </tr>
@@ -47,6 +47,5 @@
 <p>${applicationScope.mensaje}</p>
 <p>${requestScope.mensaje}</p>
 <p>${mensaje}</p>
-<p><a href="${pageContext.request.contextPath}/index.html">volver</a></p>
-</body>
-</html>
+<p><a class="btn btn-sm btn-secondary" href="${pageContext.request.contextPath}/index.jsp">volver</a></p>
+<jsp:include page="layout/footer.jsp" />
