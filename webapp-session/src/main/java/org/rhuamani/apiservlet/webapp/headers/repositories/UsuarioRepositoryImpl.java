@@ -1,6 +1,5 @@
 package org.rhuamani.apiservlet.webapp.headers.repositories;
 
-import org.rhuamani.apiservlet.webapp.headers.models.Curso;
 import org.rhuamani.apiservlet.webapp.headers.models.Usuario;
 
 import java.sql.*;

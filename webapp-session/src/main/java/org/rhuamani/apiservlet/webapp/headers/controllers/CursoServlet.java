@@ -23,6 +23,6 @@ public class CursoServlet extends HttpServlet {
 
         req.setAttribute("titulo", "Tarea 9: Listado de cursos");
         req.setAttribute("cursos", cursos);
-        getServletContext().getRequestDispatcher("/listarCurso.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/cursos/listar.jsp").forward(req, resp);
     }
 }

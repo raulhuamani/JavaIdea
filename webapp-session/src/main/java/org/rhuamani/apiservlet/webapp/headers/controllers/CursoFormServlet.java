@@ -36,7 +36,7 @@ public class CursoFormServlet extends HttpServlet {
         }
         req.setAttribute("curso", curso);
         req.setAttribute("titulo", id > 0 ? "Tarea 10: Editar curso" : "Tarea 10: Crear curso");
-        getServletContext().getRequestDispatcher("/formCurso.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/cursos/form.jsp").forward(req, resp);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class CursoFormServlet extends HttpServlet {
             req.setAttribute("errores", errores);
             req.setAttribute("curso", curso);
             req.setAttribute("titulo", id > 0 ? "Tarea 10: Editar curso" : "Tarea 10: Crear curso");
-            getServletContext().getRequestDispatcher("/formCurso.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher("/cursos/form.jsp").forward(req, resp);
         }
     }
 }
