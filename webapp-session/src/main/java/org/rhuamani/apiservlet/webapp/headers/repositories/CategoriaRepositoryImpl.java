@@ -60,12 +60,29 @@ public class CategoriaRepositoryImpl implements Repository<Categoria> {
 
     @Override
     public void guardar(Categoria categoria) throws SQLException {
+        String sql;
+        if (categoria.getId() != null && categoria.getId() > 0) {
+            sql = "update categorias set nombre=? where id=?";
+        } else {
+            sql = "insert into categorias (nombre) values (?)";
+        }
+        try ( PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, categoria.getNombre());
 
+            if (categoria.getId() != null && categoria.getId() > 0) {
+                stmt.setLong(2, categoria.getId());
+            }
+            stmt.executeUpdate();
+        }
     }
 
     @Override
     public void eliminar(Long id) throws SQLException {
-
+        String sql = "delete from categorias where id=?";
+        try ( PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        }
     }
 
     private Categoria getCategoria(ResultSet rs) throws SQLException {
