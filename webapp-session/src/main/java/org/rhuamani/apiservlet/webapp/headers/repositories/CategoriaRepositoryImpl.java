@@ -17,7 +17,7 @@ public class CategoriaRepositoryImpl implements Repository<Categoria> {
     public List<Categoria> listar() throws SQLException {
         List<Categoria> categorias = new ArrayList<>();
         try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM categorias c")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM categorias c ORDER BY c.id ASC")) {
             while (rs.next()) {
                 Categoria categoria = getCategoria(rs);
                 categorias.add(categoria);

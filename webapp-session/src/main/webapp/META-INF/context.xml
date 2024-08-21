@@ -1,0 +1,23 @@
+<Context>
+
+    <Resource name="jdbc/mysqlDB" auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+              username="curso" password="java_curso"  driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/java_curso?serverTimezone=America/Lima"/>
+
+    <Resource name="jdbc/postgresDB" auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+              username="curso" password="java_curso" driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://localhost:5432/java_curso"/>
+
+    <Resource name="jdbc/sqlserverDB" auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+              username="curso" password="java_curso" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+              url="jdbc:sqlserver://localhost:1433;database=java_curso;encrypt=false"/>
+
+    <Resource name="jdbc/oracleDB" auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+              username="curso" password="java_curso" driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@localhost:1521:xe"/>
+
+</Context>

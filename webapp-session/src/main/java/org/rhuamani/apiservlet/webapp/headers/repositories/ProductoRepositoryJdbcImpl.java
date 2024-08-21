@@ -99,7 +99,7 @@ public class ProductoRepositoryJdbcImpl implements Repository<Producto> {
         List<Producto> productos = new ArrayList<>();
 
         try ( PreparedStatement stmt = conn.prepareStatement("SELECT p.*, c.nombre as categoria FROM productos p " +
-                " INNER JOIN categorias c ON (p.categoria_id = c.id) WHERE p.nombre like ? ")) {
+                " INNER JOIN categorias c ON (p.categoria_id = c.id) WHERE p.nombre like ? ORDER BY p.id ASC")) {
             stmt.setString(1, "%" + nombre + "%");
 
             try ( ResultSet rs = stmt.executeQuery()) {

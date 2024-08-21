@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<jsp:include page="layout/headerCurso.jsp" />
+<jsp:include page="/layout/headerCurso.jsp" />
 
 <h1>${titulo}</h1>
 
@@ -51,4 +51,4 @@
     </div>
     <input class="btn btn-primary" type="hidden" name="id" value="${curso.id}">
 </form>
-<jsp:include page="layout/footer.jsp" />
+<jsp:include page="/layout/footer.jsp" />

@@ -17,7 +17,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     public List<Usuario> listar() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
 
-        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT * FROM usuarios")) {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT * FROM usuarios u ORDER BY u.id ASC")) {
             while (rs.next()) {
                 Usuario p = getUsuario(rs);
                 usuarios.add(p);
@@ -95,7 +95,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     public List<Usuario> porNombre(String nombre) throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
 
-        try ( PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuarios c WHERE c.username like ?")) {
+        try ( PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuarios u WHERE u.username like ? ORDER BY u.id ASC")) {
             stmt.setString(1, "%" + nombre + "%");
 
             try ( ResultSet rs = stmt.executeQuery()) {

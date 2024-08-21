@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<jsp:include page="layout/headerCurso.jsp" />
+<jsp:include page="/layout/headerCurso.jsp" />
 
 <h1>${titulo}</h1>
 <p><a class="btn btn-primary my-2" href="${pageContext.request.contextPath}/cursos/form">crear [+]</a></p>
@@ -36,4 +36,4 @@
     </c:forEach>
 </table>
 <p><a class="btn btn-sm btn-secondary" href="${pageContext.request.contextPath}/index.jsp">volver</a></p>
-<jsp:include page="layout/footer.jsp" />
+<jsp:include page="/layout/footer.jsp" />
